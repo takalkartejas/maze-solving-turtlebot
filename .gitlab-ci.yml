@@ -1,0 +1,32 @@
+image: darkmatterdev/amr-rostesting:noetic
+
+stages:
+  - execute miniproject
+
+.miniprj-setup: &miniprj-setup
+   - shopt -s extglob
+   - export GIT_SSL_NO_VERIFY=1
+   - export TURTLEBOT3_MODEL=burger
+   - cd /root/catkin_ws/src && ls && rm -rf !("stud-amr")
+   - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@fbe-gitlab.hs-weingarten.de/mat-iki/amr-rostest.git
+   - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@fbe-gitlab.hs-weingarten.de/mat-iki/amr-miniprj.git
+   - rm -rf amr-rostest/tier3_test amr-rostest/final_project_test && rm -rf amr-rostest/gazebo_launch
+   - cd /root/catkin_ws && catkin_make && . devel/setup.bash
+
+test miniproject:
+    stage: execute miniproject
+    tags:
+      - rostest
+    variables:
+        GIT_DEPTH: "1"
+    before_script:
+      *miniprj-setup
+    script:
+      - cd $CI_PROJECT_DIR && PACKAGE=$(ls | grep "_miniprj") && cd $PACKAGE/scripts
+      - sed -i '3iimport sys,os\nsys.stdout = open(os.devnull, "w")' *.py
+      - rostest miniproject_test test_miniprj.test PATH:=$(rospack find $PACKAGE) PKG:=$PACKAGE GUI:=0 --results-base-dir ${CI_PROJECT_DIR}
+    artifacts:
+        when: always
+        reports:
+          junit:
+            - ${CI_PROJECT_DIR}/miniproject_test/*.xml
