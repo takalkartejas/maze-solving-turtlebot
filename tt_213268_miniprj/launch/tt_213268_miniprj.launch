@@ -1,0 +1,5 @@
+<launch>
+  <!-- My Package launch file -->
+  <node pkg="tt_213268_miniprj" type="robot_control.py" name="bot_controller" output="screen">
+  </node>
+</launch>
