@@ -1,5 +1,8 @@
 # Maze solving robot
 
+The repostiory contains a package named tt_213268_miniprj. In the package there is an action messeage called Start. In robot_control.py file a action sever called mini_prject_action_sever and a node call robot_control art declared
+
+## *General description
+ 
 
 
-![](https://images-na.ssl-images-amazon.com/images/S/pv-target-images/c2b323f998457c506e12548e5eb5ee447265673a46725a377456e95d7416dcd4._SX1080_.jpg)
