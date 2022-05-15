@@ -1,0 +1,5 @@
+<launch>
+  <!-- My Package launch file -->
+  <node pkg="test_gazebo" type="gazebo_test.py" name="gazebo_test" output="screen">
+  </node>
+</launch>
