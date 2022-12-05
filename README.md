@@ -10,6 +10,8 @@ The repository contains a package named tt_213268_miniprj. In the package there 
 * The node is subscribed to 'scan' topic and publishes to 'cmd_vel' topic.
 * The action server will start the robot when it recieves the goal, the node reads the distance data from the 'scan' topic and it controls the movement of the robot by publishing to 'cmd_vel' topic.
 
+https://user-images.githubusercontent.com/67382565/205753830-bee16a42-9b9a-4410-b707-785b234e486b.mp4
+
 #### Getting started
 
 * Start the gazebo simulation before running the package.
