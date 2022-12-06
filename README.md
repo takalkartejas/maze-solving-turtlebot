@@ -10,8 +10,12 @@ https://user-images.githubusercontent.com/67382565/205753830-bee16a42-9b9a-4410-
 
 
 ## Project structure
-The following screenshot of gitg output shows the structure of the control system
+The following screenshot of rqt_graph shows the structure of the control system
 
+![total_control_system](https://user-images.githubusercontent.com/67382565/205900587-6d5e9309-4692-462a-91d3-78a09cb988df.png)
+
+* The package tt_213268_miniprj contains a node called 'bot_controller' which publishes the linear and angular velocities of robot to '/cmd_vel' topic and is subscribed to '/scan' topic which gives the data from lidar sensor.
+* 
 #### Getting started
 
 * Start the gazebo simulation before running the package.
